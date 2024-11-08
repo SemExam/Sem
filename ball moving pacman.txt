@@ -1,0 +1,67 @@
+html tag
+
+<canvas id="canvas" width="300" height="300" style="border:1px solid #000;"></canvas>
+
+js function
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let x = 50, y = 50, dx = 2, dy = 2;
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.arc(x, y, 10, 0, Math.PI * 2); // Draw small ball
+  ctx.fillStyle = 'blue';
+  ctx.fill();
+
+  x += dx;
+  y += dy;
+
+  // Bounce off walls
+  if (x > canvas.width - 10 || x < 10) dx = -dx;
+  if (y > canvas.height - 10 || y < 10) dy = -dy;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+pacman
+
+html tag
+<canvas id="canvas" width="300" height="300" style="border:1px solid #000;"></canvas>
+
+
+js function
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let x = 20, y = 150, radius = 20, dx = 2;
+let angle = 0.2; // Mouth angle
+
+function drawPacman() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.beginPath();
+  ctx.arc(x, y, radius, angle * Math.PI, (2 - angle) * Math.PI); // Pac-Man body
+  ctx.lineTo(x, y); // Close the mouth
+  ctx.fillStyle = 'yellow';
+  ctx.fill();
+
+  x += dx;
+  if (x > canvas.width + radius) x = -radius; // Loop Pac-Man from left to right
+  
+  // Animate mouth opening and closing
+  angle = angle > 0.2 ? 0.1 : 0.2;
+
+  requestAnimationFrame(drawPacman);
+}
+
+drawPacman();
+
+
+
+
