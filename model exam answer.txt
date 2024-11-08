@@ -1,0 +1,234 @@
+1)Create a function processNumbers that accepts an array of numbers. Perform the
+following operations using array methods:
+ Filter out numbers that are less than 10.
+ Sort the remaining numbers in ascending order.
+ Multiply each number by 2.
+ Return the resulting array.
+Sample input: [3, 15, 8, 22, 5, 30] Expected output: [30, 44, 60]
+
+answer
+
+function processNumbers(arr) {
+    return arr
+        .filter(num => num >= 10)      
+        .sort((a, b) => a - b)         
+        .map(num => num * 2);          
+}
+
+
+const input = [3, 15, 8, 22, 5, 30];
+console.log(processNumbers(input));    
+
+2)Write a function summarizeEmployee that takes an object representing an employee and
+returns a string summarizing the employee&#39;s details. The object will have properties
+name, position, and salary. Format the return string as:
+&quot;Employee &lt;name&gt; holds the position of &lt;position&gt; and earns &lt;salary&gt; per year.&quot;
+Sample Input: name: &#39;John Doe&#39;, position: &#39;Software Engineer&#39;, salary: 80000
+Expected output: &quot;Employee John Doe holds the position of Software Engineer and
+earns 80000 per year.&quot;
+
+answer
+
+function summarizeEmployee(employee) {
+    return `Employee ${employee.name} holds the position of ${employee.position} and earns ${employee.salary} per year.`;
+}
+
+
+const employee = {
+    name: 'John Doe',
+    position: 'Software Engineer',
+    salary: 80000
+};
+
+console.log(summarizeEmployee(employee));
+
+3)Create an array of objects representing products. Each product has properties name and
+price. Write a function getTotalPrice that returns the total price of all products whose
+price is greater than 100. Use array methods (filter and reduce) to solve this.
+Sample input
+[ { name: &#39;Laptop&#39;, price: 1500 }, { name: &#39;Mouse&#39;, price: 25 }, { name: &#39;Keyboard&#39;,
+price: 75 }, { name: &#39;Monitor&#39;, price: 300 } ];
+Expected output: 1800
+
+answer
+
+function getTotalPrice(products) {
+    return products
+        .filter(product => product.price > 100) // Filter products with price > 100
+        .reduce((total, product) => total + product.price, 0); // Sum up their prices
+}
+
+// Sample input
+const products = [
+    { name: 'Laptop', price: 1500 },
+    { name: 'Mouse', price: 25 },
+    { name: 'Keyboard', price: 75 },
+    { name: 'Monitor', price: 300 }
+];
+
+console.log(getTotalPrice(products)); // Expected output: 1800
+
+4)
+Create a simple HTML page with a &lt;div&gt; element that has the id message and a button
+with the id changeTextButton. Write JavaScript code so that when the button is clicked,
+the text inside the &lt;div&gt; changes to &quot;Hello, World!&quot;.
+
+answer
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Example</title>
+</head>
+<body>
+    <div id="message">This is the original text.</div>
+    <button id="changeTextButton">Change Text</button>
+
+    <script>
+        document.getElementById("changeTextButton").addEventListener("click", function() {
+            document.getElementById("message").innerText = "Hello, World!";
+        });
+    </script>
+</body>
+</html>
+
+5)
+Write a JavaScript function called
+a. getFirstTwo that takes an array and returns the first two elements of the array.
+b. modifyArray that removes the second element of the given array and inserts three
+new elements in its place.
+
+answer
+
+a)
+function getFirstTwo(arr) {
+    return arr.slice(0, 2); // Returns the first two elements of the array
+}
+
+// Example usage:
+console.log(getFirstTwo([1, 2, 3, 4])); // Expected output: [1, 2]
+
+b)
+function modifyArray(arr, newElements) {
+    arr.splice(1, 1, ...newElements); // Removes the second element and inserts new elements
+    return arr;
+}
+
+
+6)
+Write a JavaScript code to display and move Pacman from one side of the screen to the
+other and vice versa
+
+answer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+        }
+        #pacman {
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            clip-path: polygon(25% 0%, 100% 50%, 25% 100%, 0% 50%);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pacman"></div>
+
+    <script>
+        const pacman = document.getElementById('pacman');
+        let position = 0;
+        let direction = 1;
+        const speed = 2; // Speed of Pac-Man's movement in pixels
+
+        function movePacman() {
+            position += direction * speed;
+
+            // Check if Pac-Man reached the screen boundaries
+            if (position >= window.innerWidth - pacman.offsetWidth || position <= 0) {
+                direction *= -1; // Reverse direction
+                pacman.style.transform = `scaleX(${direction}) translateY(-50%)`; // Flip Pac-Man
+            }
+
+            pacman.style.left = position + 'px';
+            requestAnimationFrame(movePacman); // Continue the animation
+        }
+
+        movePacman(); // Start the animation
+    </script>
+</body>
+</html>
+
+
+// Example usage:
+console.log(modifyArray([10, 20, 30, 40], [100, 200, 300])); // Expected output: [10, 100, 200, 300, 30, 40]
+
+7)
+
+answer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <h2>Calculator</h2>
+    <label for="num1">1st Number:</label>
+    <input type="number" id="num1"><br><br>
+
+    <label for="num2">2nd Number:</label>
+    <input type="number" id="num2"><br><br>
+
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button><br><br>
+
+    <div id="result">The Result Is: </div>
+
+    <script>
+        function multiply() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const result = num1 * num2;
+            document.getElementById("result").innerText = `The Result Is: ${result}`;
+        }
+
+        function divide() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (num2 === 0) {
+                document.getElementById("result").innerText = "The Result Is: Cannot divide by zero";
+            } else {
+                const result = num1 / num2;
+                document.getElementById("result").innerText = `The Result Is: ${result}`;
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+8)
+
+answer
